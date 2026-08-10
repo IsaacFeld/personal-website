@@ -1,0 +1,103 @@
+---
+import pool from "../../assets/pool.jpg"
+const pageName = "daniel"
+---
+
+<body>
+    <div id="adiv" style="margin-top: 1em">
+        <a
+            style="background-color: rgb(255, 191, 0); padding: 8px 16px; border: 2px solid blue;border-radius: 50%;"
+            href="/about">go back</a
+        >
+    </div>
+    <!--
+<head>                  </head>
+opening tag            closing tag
+
+common tags in html
+<div></div> - box/container for anything inside
+<p></p> - paragraph element, lets you write text on the screen
+<h1></h1> - heading 1 (biggest title),
+lets you write very big text
+
+<h2> <h3> <h4> <h5> - each one is a little bit smaller
+than the one before it
+
+<a></a> - lets you link a different website to yours
+GO BEFORE THE END OF THE OPENING TAG
+<h1 GO HERE >
+-->
+    <h3 id="text1" style="text-align: center">My name is daniel</h3>
+    <p id="text2" style="text-align: center">
+        I love my great brother Isaac he is the best
+    </p>
+    <p id="text1" style="text-align: center">I know how to play guitar</p>
+    <p id="text2" style="text-align: center">I love biking</p>
+    <p id="text1" style="text-align: center">I love mushrooms</p>
+    <div
+        id="box"
+        style="
+    display: flex;
+    width: fit-content;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    border-style: groove;
+    border-width: 4px;
+    border-color: blue;
+  "
+    >
+        <video src="/guitar.mp4" controls></video>
+        <img src={pool.src} style="width: 500px; height: 832px" />
+    </div>
+
+    <h3 id="text2" style="text-align: center">
+        I also have a sister named Emma
+    </h3>
+</body>
+
+<script is:inline src="/gsap.min.js"></script>
+
+<script>
+    gsap.from("#text1", {
+        duration: 2,
+        ease: "ease",
+        x: -300,
+    });
+    gsap.from("#text2", {
+        duration: 2,
+        ease: "ease",
+        x: 300,
+    });
+    gsap.from("#box", {
+        duration: 3,
+        ease: "ease",
+        rotate: 360,
+        x: -300,
+    });
+</script>
+
+<style>
+    a:hover {
+        border-color: rgb(255, 115, 0) !important;
+        background-color: hsl(45, 100%, 45%) !important;
+        color: white;
+    }
+    #adiv:hover {
+        transform: translateY(3px);
+        transition: transform 0.1s ease-in;
+    }
+
+    @media only screen and (max-width: 600px) {
+        #box {
+            max-width: 300px;
+        }
+        #box video {
+            max-width: 300px;
+        }
+        #box img {
+            max-width: 300px;
+            height: auto !important;
+        }
+    }
+</style>

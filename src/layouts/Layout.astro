@@ -1,3 +1,15 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Font } from 'astro:assets';
+
+interface Props {
+  pageName: string;
+}
+const { pageName } = Astro.props
+---
+
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,11 +17,17 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+		<Font cssVariable="--font-bs" />
+		<Font cssVariable="--font-ibm" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>isaac's website</title>
 	</head>
 	<body>
+        <Header pageName={pageName} />
+        <div class="center"> 
 		<slot />
+		<Footer />
+        </div>
 	</body>
 </html>
 
@@ -20,4 +38,7 @@
 		width: 100%;
 		height: 100%;
 	}
+	
+
+
 </style>

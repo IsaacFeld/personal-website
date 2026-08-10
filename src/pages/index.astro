@@ -1,11 +1,88 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '../layouts/Layout.astro'
+import '../styles/global.css'
+import knightImage from '../assets/scaled_purple_knight.png'
+const pageName = "home"
 ---
 
-<Layout>
-	<Welcome />
+<Layout pageName={pageName}>
+    
+        <div class="textbox">
+
+            <img id="logo" class="bsw" style="margin-bottom: 2em; " height="200px"  src={knightImage.src} alt="">
+            <h2 id="welcome" style="z-index: -1; position: relative">Welcome to my website! </h2>           
+            
+            <p>
+                Heyo <yellow>Isaac</yellow> here,
+                <br>
+
+                The main purpose of this place is to showcase my various interests and projects on the world wide web, and of course to share a little bit about myself, and potentially connect with others. 
+            </p>
+            <p>
+                I am always working on adding new stuff to this site so make sure to check back once in a while.  
+                This website was developed without the use of frameworks, essentially "hardcoded". 
+                At some point i'll be doing a revamp of this site and use some kind of frontend framework to make my life easier, but for now I'll stick to 
+                copy-pasting chunks of HTML instead of using components :').
+            </p>
+            <p>
+                Make sure to visit all the pages before leaving, and if you have constructive criticism, feedback, questions, or just want to talk feel free to reach out to me. 
+                <br>P.S. you can find my discord and instagram at the bottom of the page, and you can even email me at <a href="mailto:isaacbfeldman@gmail.com">isaacbfeldman@gmail.com</a>.
+            </p>
+
+            <!--
+            Hello snooper, 
+            I've removed the dev log for now due to it being quite boring, but it may come back in the future. 
+            
+            <devlog>
+
+                <h3>A Tiny Dev Log</h3>
+
+                <ul style="color: var(--text-color);">
+                    <br>
+                    <li>
+                        make this website more interesting
+                        <ul style="padding-bottom: 0.25em; padding-top: 0.25em;">
+                            <li>
+                                <s>cooler landing page / navigation for mobile </s>
+                            </li>
+                        </ul>
+                    </li>
+                    <br>
+                    <li>
+                        <s>food blog </s>
+                        <ul style="padding-bottom: 0.25em; padding-top: 0.25em;">
+                            <li>
+                                 <s> small screen support for food blog </s> 
+                            </li>
+                        </ul>
+                    </li>
+                    <br>
+                    <li>
+                        <s>music & memories page </s>
+                    </li>
+                    <br>
+                    <li>public drawing board / signature board</li>
+                    <br>
+                    <li>comments / discussion page?</li>
+                </ul>
+                
+
+            </devlog>
+            -->
+
+            <p id="githubstats">Usually my github activity actively reflects how much I am working on this website (biggest lie ever).</p>
+            <githubstats class="bsw">
+           <img src="http://ghchart.rshah.org/2a3c2a/IsaacFeld" alt="my github chart" />
+            </githubstats>
+        </div>
+
 </Layout>
+
+<style>
+    #welcome{
+        font-family: var(--font-bs);
+    }
+    *{
+        font-family: var(--font-ibm);
+    }
+</style>

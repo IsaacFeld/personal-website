@@ -1,0 +1,185 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import '../../styles/global.css'
+const pageName = "projects"
+---
+
+<script>
+for(let i = 0; i < document.querySelectorAll('project').length; i++){
+  document.querySelectorAll('project')[i].addEventListener('click', (e) => {
+    if (e.target.classList.contains('link-container'))  return;
+    if(document.querySelectorAll('project')[i].classList.contains('out')){
+      document.querySelectorAll('project')[i].classList.remove('out')
+      document.querySelectorAll('project')[i].classList.add('in')
+        
+    }
+    else {
+        document.querySelectorAll('project')[i].classList.remove('in')
+        document.querySelectorAll('project')[i].classList.add('out')
+        deactivateAllProjects(i);
+        
+    }
+  })
+
+    
+}
+
+function deactivateAllProjects(sparedProject){
+    for(let i = 0; i < document.querySelectorAll('project').length; i++){
+        if(i !== sparedProject && document.querySelectorAll('project')[i].classList.contains('out')){
+            document.querySelectorAll('project')[i].classList.remove('out')
+            document.querySelectorAll('project')[i].classList.add('in')
+        }
+    }
+}
+
+
+</script>
+<Layout pageName={pageName}>
+
+<div class="textbox" style="padding-bottom: 0px;">
+    <h2>What I've been working on...</h2>
+</div>
+<project>
+    <project-row>
+        <project-title>
+            2011 Macbook Air Ubuntu Server
+        </project-title>
+        <project-expand>
+            ^
+        </project-expand>
+    </project-row>
+    <project-description>
+        I didn't want to pay for cloud hosting services 
+        so I decided to repurpose an ancient Macbook Air into a server for all my homelab needs.
+    </project-description>
+    <project-content-wrapper>
+        <project-content>
+            <h3>Config</h3>
+            <p>
+            
+                I installed Ubuntu Server (22.04.05 LTS) on my 2011 Macbook. Then, I set it up to run websites and web apps. In total, estimated costs are $35/year with it running 24/7. 
+                Using Caddy DuckDNS to keep the IP records up to date I'm able to easily host websites & web apps.
+                If you haven't tried creating your own server yet, but have been thinking about it I highly recommend you to try it out! Not only did I learn a lot about Linux, but I also learnt a lot about networking, dns records, and being able to host your own stuff with your own hardware is freaking awesome. 
+            </p>
+            <h3>Hosting a Node.js Website</h3>
+            <div style="display: flex; flex-direction: row; flex-wrap:wrap; row-gap: 1em; column-gap: 1em;">
+                <div class="blob">bigwb.isaacf.me</div>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                      <svg style="stroke: var(--text-highlight);" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+                      <p style="font-size: var(--font-smallest)"> CNAME</p>
+                </div>
+              
+                <div class="blob">isaacf.duckdns.org</div>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                      <svg style="stroke: var(--text-highlight);" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+                      <p style="font-size: var(--font-smallest)"> A Record</p>
+                </div>
+                <div class="blob">37.120.24.5</div>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                      <svg style="stroke: var(--text-highlight);" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+                      <p style="font-size: var(--font-smallest)"> Caddy </p>
+                </div>
+                <div class="blob">localhost:3001</div>
+            </div>
+        </project-content>
+    </project-content-wrapper>
+
+</project>
+
+
+<project>
+    <project-row>
+        <project-title>
+            Weatherbuoy
+        </project-title>
+       <div style="display: flex; flex-direction: row; column-gap: 2em; align-items: center;">
+        <a target="_blank" href="https://weatherbuoy-production.up.railway.app/" class="link-container">
+            <svg style="pointer-events: none; color: var(--text-highlight)" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </a>
+        <project-expand>
+            ^
+        </project-expand>
+       </div>
+
+    </project-row>
+    <project-description>
+        Weatherbuoy is a passion project me and a friend have been working on.
+        We aim to replace the current outdated crusty PHP site that tracks the water temperature of our favorite lake in Berlin "Schlachtensee" with a more modern, user-friendly, and interesting website. 
+    </project-description>
+    <project-content-wrapper>
+        <project-content>
+            <h3>
+                Design & Animation
+            </h3>
+            <p>While my friend Lars builds the actual machine that tracks the water temperature, I've been working on the front & back ends of the website.
+            This was the first project where I used a dedicated animation framework (<a href="https://animejs.com/">anime.js</a>) in order to add unique effects to the design such as bubbles, a wave effect, and even some fish! 
+            This was also the first time I ever used Figma to properly plan out a website's design before starting to code.
+            We are far from done, but we hope that by the end of 2026 we'll have a weatherbuoy floating in Schlachtensee.</p>
+            
+        </project-content>
+    </project-content-wrapper>
+
+</project>
+<project>
+    <project-row>
+        <project-title>
+            Cosmos
+        </project-title>
+        <project-expand>
+            ^
+        </project-expand>
+    </project-row>
+    <project-description>
+        Cosmos is a work-in-progress open source 
+        google drive alternative powered by Nuxt & Supabase. Cosmos turns file sharing into a more social experience by promoting sharing through friends instead of just links.
+    </project-description>
+    <project-content-wrapper>
+        <project-content>
+            <h3>Inspiration</h3>
+            <p>I was motivated to create Cosmos because I wanted to have my own file storage interface 
+                that I could potentially host on my own server that was secure, private, and easy to use. I also wanted to learn about networking, 
+                authentication, and how file upload & downloads are handled. Also once it was up and running I wanted to be able to share files with friends and family and let them upload stuff as well. 
+            </p>
+            <h3>The Work</h3>
+            <p>
+                I built Cosmos using Nuxtv3, and used Supabase to handle authentication and database stuff. For the UI I used a mix of NuxtUI's premade components, and hand-drawn icons! 
+                The big challenges when it came to Cosmos was the architecture behind file & especially folder upload/download. For a simple small file it was simple, but things got complicated when the file was big or someone uploaded a folder with hundreds or even thousands of files. 
+                In order to solve these issues I needed to implement systems to split up the uploads in chunks, which would eleviate the load on the server, and I also needed to implement a cleanup service that would keep track of uploads, and regularly clean up those that failed due to network interrupts or other unexpected interruptions.
+            </p>
+            <h3>Reality</h3>
+            <p>Eventually I got a barebones version of Cosmos running, and even shared it with some people to test it out. The file sharing functionality worked well, but there were still quite a few bugs lying around. There was also a lot of room for improvement, and I realized that the infrastructure required for hosting a virtual drive service is quite expensive.
+            I also needed quick wifi, which was not happening any time soon due to me living in Germany so I realized that I should put the project on hold until I'm in a better place physically where I could actually realistically host Cosmos for others to use! 
+            Thus Cosmos is not being worked on at the moment, but I do intend to continue working on it one day and create a finished product. 
+            </p>
+        </project-content>
+    </project-content-wrapper>
+</project>
+<project>
+    <project-row>
+        <project-title>
+            isaacf.me
+        </project-title>
+        <project-expand>
+            ^
+        </project-expand>
+    </project-row>
+    <project-description>
+        This personal website was completely free to make, and if you want to learn how I made it, and also how you could host your own website for free using Github then click me!
+    </project-description>
+    <project-content-wrapper>
+        <project-content>
+            <h3>Github Pages</h3>
+            <p>Github provides a free simple static site for each github account which can be found under "github_username.github.io". To modify the site you need to create a repository whos name perfectly matches your github username, in my case it was "isaacfeld.github.io".
+            Once you've done that you can fetch the repo into your IDE of choice, and start editing. If you want to change the domain of the website you can create a text file called "CNAME" in the root of your project that contains the name of your custom domain (in my case "isaacf.me"). 
+            Then you'll need to register the custom domain in the repository settings after you've updated your own DNS records by adding an alias or A record that points to isaacfeld.github.io. Now you have a free website that you can put anything on!
+            </p>
+            <h3>Creating isaacf.me</h3>
+            <p>I decided to go the full vanilla route when developing my personal website since Github pages has some built-in limitations as it requires a static site. Github pages lets you use directory-based url addressing, so when you create a folder called "food" then going to "isaacf.me/food" will automatically direct you to the index.html file under that directory.
+                Another issue I noticed is that Browsers tend to cache your .css files so when you update the .css files the browser will still serve the old version of the .css file. The workaround I found was to add a version parameter when linking my stylesheet like so:
+            </p><div class="blob"> src="style.css?v=1" </div> <p> this solution is rather annoying though since you need to update every single link in all your index.html files to force browsers to load and use the updated stylesheets. I also highly suggest getting a minified <a target="_blank" href="https://jquery.com/download/">jquery</a> file and adding it to your project so that you don't need to write out "document.querySelectorAll" each time.</p>
+        </project-content>
+    </project-content-wrapper>
+</project>
+
+</Layout>

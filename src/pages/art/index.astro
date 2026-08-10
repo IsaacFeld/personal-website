@@ -1,0 +1,120 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css"
+import cobaltCoin from "../../assets/pixelart/cobalt_coin.png"
+import copperJot from "../../assets/pixelart/copper_jot.png"
+import goldTalent from "../../assets/pixelart/gold_talent.png"
+import armorIcon from "../../assets/pixelart/armor_icon.png"
+import attackIcon from "../../assets/pixelart/attack_icon.png"
+import healthIcon from "../../assets/pixelart/health_icon.png"
+import manaIcon from "../../assets/pixelart/mana_icon.png"
+import electronIcon from "../../assets/pixelart/electron_icon.png"
+import psqlIcon from "../../assets/pixelart/psql_icon.png"
+import tailwindIcon from "../../assets/pixelart/tailwind_icon.png"
+import vscodeIcon from "../../assets/pixelart/vscode_icon.gif"
+import dice from "../../assets/pixelart/dice_six.png"
+import floweryRock from "../../assets/pixelart/flowery_rock.png"
+import lonelyTree from "../../assets/pixelart/lonely_tree.png"
+import crustaceousHelm from "../../assets/pixelart/crustaceous helm.png"
+import ceruleanSword from "../../assets/pixelart/cerulean_sword.png"
+import heartAxe from "../../assets/pixelart/axe_of_hearts.gif"
+import goldAxe from "../../assets/pixelart/gold_axe.png"
+import darkSword from "../../assets/pixelart/dark_sword.png"
+import toxicFire from "../../assets/pixelart/toxic_fire.gif"
+import emmasArt from "../../assets/pixelart/emmas_art.png"
+const pageName = "art"
+---
+
+<Layout pageName={pageName}>
+    <div class="textbox">
+        <h2>Welcome to my <primary>Pixel</primary> Art Gallery!</h2>
+        <p>One of my goals in life is to be good at both logical and creative forms of thinking. My studies are already sharpening my logical skills (in my opinion too much sharpening), therefore I need to 
+            use my creativity in personal projects and hobbies outside of University. That's where Pixel Art comes in to play, in fact ever since I was young I always
+            wanted to be able to draw Pixel Art. I find the art style addictive to look at. Pixel Art also evokes some sort of deep
+            nostalgia in me which probably stems from the fact that video game graphics tended to be more pixel-y when I was young. 
+            Therefore I took it upon myself to learn Pixel Art, and most importantly get good at it to an extent where I could develop my own assets
+            if I were to make my own video game one day :) (this I will do as well).
+        </p>
+    </div>
+    <div class="textbox">
+        <gallery>
+            <div class="textbox">
+                <h3>Humble Beginnings</h3>
+                <p>practicing shading</p>
+                <galleryrow>
+                    <img src={cobaltCoin.src} alt="cobalt_coin">
+                    <img src={copperJot.src} alt="copper_jot">
+                    <img src={goldTalent.src} alt="gold_talent">
+                </galleryrow>
+                <p>icons!</p>
+                <galleryrow>
+                    <img src={armorIcon.src} alt="armor">
+                    <img src={attackIcon.src} alt="attack">
+                    <img src={healthIcon.src} alt="health">
+                    <img src={manaIcon.src} alt="mana">
+                </galleryrow>
+                <p>coding icons</p>
+                <galleryrow>
+                    <img src={electronIcon.src} alt="electron_icon">
+                    <img src={psqlIcon.src} alt="postgresql_icon">
+                    <img src={tailwindIcon.src} alt="tailwind_icon">
+                    <img src={vscodeIcon.src} alt="vscode">
+                </galleryrow>
+                <p>getting the hang of things</p>
+                <galleryrow>
+                    <img src={dice.src} alt="d6">
+                    <img src={floweryRock.src} alt="gold_axe">
+                    <img src={lonelyTree.src} alt="lonely tree">
+                    <img src={toxicFire.src} alt="toxic fire">
+                    <img src={crustaceousHelm.src} alt="crustaceous helm">
+                    
+                </galleryrow>
+                <p>swords & axes</p>
+                <galleryrow>
+                    
+                    <img src={ceruleanSword.src} alt="cerulean_sword">
+                    <img src={heartAxe.src} alt="axe of hearts">
+                    <img src={goldAxe.src} alt="">
+                    <img src={darkSword.src} alt="dark_sword">
+                    
+                </galleryrow>
+                <p>emma's artwork</p>
+                <galleryrow>
+                    <img src={emmasArt.src} alt="emma">
+                </galleryrow>
+            </div>
+
+
+            <div class="textbox"></div>
+        </gallery>
+    </div>
+    
+</Layout>
+
+<style>
+galleryrow{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 2em;
+    row-gap: 1em;
+    column-gap: 1em;
+}
+
+galleryrow img{
+    padding: 0.5em;
+    align-self: center;
+    image-rendering: pixelated;
+    width: 128px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media only screen and (max-width: 600px) {
+    galleryrow{
+        grid-template-columns: auto auto;
+        padding: 0.5em;
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+    }
+}
+    </style>
