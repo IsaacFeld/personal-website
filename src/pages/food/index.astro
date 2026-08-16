@@ -8,11 +8,67 @@ const posts = await getCollection('foodblog');
 ---
 
 <Layout pageName="food">
-    <ul>
-        {posts.map((post) => (
-        <li>
-            <a href={`/food/${post.id}`}> {post.data.title}</a>
-        </li>
-        ))}
-    </ul>
+    <div class="textbox">
+        <h1 style="font-family: var(--font-indie);">Isaac's Food Blog</h1>
+        <p style="padding-left: 0em;">Welcome to my food blog. Here's where I share all my food reviews consisting mostly of restaurants from Berlin and New York City. </p>
+        
+        <div class="foodPostList">
+            {posts.map((post) => (
+            <div class="foodPost">
+                <a href={`/food/${post.id}`}> {post.data.title} {post.data.tags.map((tag) => (<tag>{tag}</tag>))}</a>
+                
+            </div>
+            ))}
+        
+        </div>
+    </div>
+    
+    
+        
+    
 </Layout>
+
+<style>
+.foodPostList{
+    display: flex; flex-direction: column; 
+    gap: 1em;
+    padding-top: 2em; 
+    border-top: 2px solid var(--primary-color);
+    
+}
+.foodPost{
+    padding: 0.5em 1em;
+    width: fit-content;
+    border-radius: 0.5em;
+    transition: background-color 0.3s ease-in;
+    
+}
+.foodPost:hover{
+    background-color: var(--bg2-color);
+}
+.foodPost a{
+    color: var(--text-color);
+    transition: color 0.3s ease-in;
+    display: flex; flex-direction: row; 
+    align-items: center; 
+    column-gap: 1em;
+    
+}
+.foodPost:hover a {
+    color: var(--text-highlight);
+}
+.foodPost:hover tag{
+    color: var(--text-highlight);
+}
+.foodPost tag{
+    color: var(--text-color)
+}
+@media only  screen and (max-width: 800px){
+    .foodPost tag{
+        display: none;
+    }
+    .foodPost{
+        background-color: var(--bg2-color);
+    }
+}
+</style>

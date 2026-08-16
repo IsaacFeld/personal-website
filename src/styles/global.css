@@ -14,7 +14,7 @@
     --color-yellow: hsl(48, 90%, 55%);
     --rose-color: #ee4e6a;
     --text-accent: hsl(30, 83%, 86%);
-    --box-shadow: #000000;
+    --box-shadow: #00000035;
     --font-smallest: 0.75em;
     --font-small: 0.875em;
     --font-normal: 1em;
@@ -22,7 +22,7 @@
     --font-bigger: 1.25em;
     --font-biggest: 1.375em;
     --font-massive: 1.75em;
-    --font-signature: 1em;
+    --font-signature: var(--font-bigger);
     --purple-one: hsl(266, 79%, 81%);
     --purple-two: #9882d3;
     --purple-three: hsl(270, 46%, 50%);
@@ -49,7 +49,9 @@
     --purple-three: hsl(270, 48%, 50%);
     --tan-green: hsl(120, 24%, 19%);
 }
-
+*{
+    font-family: var(--font-arimo);
+}
 githubstats {
     display: block;
     height: 100%;
@@ -127,10 +129,9 @@ body {
     column-gap: 100px;
     padding: 1em;
     border-radius: 3em;
-    width: 90%;
+    width: 100%;
     justify-content: space-between;
     background-color: var(--bg2-color);
-    margin: auto;
     margin-bottom: 2em;
     z-index: 1;
 }
@@ -150,9 +151,6 @@ body {
 
 #theme-container {
     display: flex;
-}
-#themeicon {
-    margin-right: 2em;
 }
 
 #nav-container {
@@ -253,7 +251,7 @@ quote p {
     padding: 20px;
     line-height: 25px;
     color: var(--text-color);
-    font-size: var(--font-small);
+    font-size: var(--font-big);
     font-weight: 450;
 }
 
@@ -278,7 +276,7 @@ footer {
 signature {
     font-size: var(--font-signature);
     color: var(--text-color);
-    font-family: "Indie Flower", cursive;
+    font-family: var(--font-indie);
 }
 
 socials {
@@ -448,28 +446,34 @@ alert.out {
     padding-bottom: 1em;
 }
 
-.gameList.in {
-    pointer-events: all;
-    opacity: 1;
-    height: 900px;
-    transition:
-        opacity 0.6s ease-in 0.3s,
-        height 0.6s linear;
+game-list-wrapper{
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease;
+    overflow: hidden;
 }
 
-.gameList {
+game-list-wrapper:has(game-list.in){
+    grid-template-rows: 1fr;
+}
+
+game-list.in {
+    pointer-events: all;
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+
+game-list {
     pointer-events: none;
     display: flex;
     opacity: 0;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 90%;
-    padding: 0% 10% 10% 10%;
-    height: 0;
-    column-gap: 20px;
-    transition:
-        opacity 0.6s ease-in,
-        height 0.6s linear 0.3s;
+    padding: 0% 10% 0% 10%;
+    min-height: 0;
+    column-gap: 1em;
+    margin-top: 2em;
+    transition: all 0.3s ease;
 }
 
 .game {
@@ -655,20 +659,29 @@ article if-subtitle {
     font-weight: 300;
     font-size: var(--font-small);
 }
+.starIcon {
+    width: 16px
+}
+tag :has(.starIcon){
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 tag {
-    font-size: var(--font-smallest);
+    align-items:center;
+    font-size: var(--font-normal);
     font-weight: 400;
     padding: 8px;
     border-radius: 2em;
-    width: 80px;
-    height: 30px;
+    width: 100px; 
+    height: 36px;
     text-align: center;
     color: var(--text-highlight);
     background-color: var(--bg2-color);
 }
 .tagContainer {
-    margin-bottom: 0.5em;
-    column-gap: 0.5em;
+    column-gap: 1em;
 }
 location {
     width: fit-content;
@@ -706,7 +719,7 @@ foodpage .center {
 foodpage .textbox p {
     padding-top: 1em;
     padding-bottom: 1em;
-    font-size: 16px;
+    font-size: var(--font-bigger);
 }
 .searchbox-container {
     display: flex;
@@ -727,22 +740,11 @@ foodpage .textbox p {
     fill: var(--text-highlight);
 }
 .ratingContainer {
-    margin-bottom: 0.5em;
-    column-gap: 0.5em;
+    column-gap: 1em;
 }
-.ratingContainer tag {
-    color: var(--text-highlight);
-    align-self: center;
-    padding: 6px;
-}
-.ratingContainer p {
-    align-self: center;
-    height: 30px;
-    padding: 0 !important;
-}
-foodpage tag {
-    align-self: end;
-}
+
+
+
 .slide-left {
     animation: 1s 1 normal slide-in-left ease-out;
 }
@@ -768,6 +770,11 @@ html {
     display: block;
     height: auto;
 }
+
+.blogImage{
+    max-width:35%;
+}
+
 .aboutImage {
     width: 200px;
 }
@@ -1003,7 +1010,7 @@ project-content p {
         --font-bigger: 1.125em;
         --font-biggest: 1.25em;
         --font-massive: 1.5em;
-        --font-signature: 0.5em;
+        --font-signature: var(--font-normal);
     }
 
 
@@ -1087,9 +1094,7 @@ project-content p {
     article location {
         height: 30px;
     }
-    .ratingContainer tag {
-        padding: 3px;
-    }
+
     tag {
         font-size: var(--font-small);
         min-width: 60px;
@@ -1117,11 +1122,9 @@ project-content p {
     foodpage .tagContainer {
         height: 30px !important;
     }
-    foodpage .ratingContainer div {
-        min-width: 100px;
-    }
+
     foodpage .textbox p {
-        font-size: var(--font-normal);
+        font-size: var(--font-big);
     }
     .back {
         align-self: center;
@@ -1271,7 +1274,7 @@ project-content p {
         width: 100%;
         height: fit-content;
 
-        padding: 0px;
+        padding: 0.5em;
     }
 
     .center {
@@ -1283,14 +1286,16 @@ project-content p {
         width: 75% !important;
     }
 
+    .blogImage{
+        max-width:70%;
+    }
+
     .buttonLabel {
         margin-left: 0px;
     }
-
-    .gameList.in {
-        height: 1200px;
+    .game{
+        width: 100%;
     }
-
     .game p {
         font-size: var(--font-small);
         line-height: 18px;

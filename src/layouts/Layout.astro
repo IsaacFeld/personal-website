@@ -15,17 +15,18 @@ const { pageName } = Astro.props
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<Font cssVariable="--font-bs" />
-		<Font cssVariable="--font-ibm" />
+		
+		<Font cssVariable="--font-arimo" />
+		<Font cssVariable="--font-indie" />
 		<meta name="generator" content={Astro.generator} />
 		<title>isaac's website</title>
 	</head>
 	<body>
-        <Header pageName={pageName} />
+        
         <div class="center"> 
-		<slot />
+        <Header pageName={pageName} />
+            <slot />
 		<Footer />
         </div>
 	</body>

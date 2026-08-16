@@ -24,24 +24,22 @@ const pageName = "about";
     document.querySelectorAll("primary")[0].textContent = calculateAge();
     document.onscroll = function (event) {};
     document.querySelectorAll("#showGameList")[0].onclick = function (event) {
-        document.querySelectorAll("#showGameList")[0].disabled = true;
-        document.querySelectorAll(".gameList")[0].classList.toggle("in");
-        setTimeout(() => {
-            document.querySelectorAll("#showGameList")[0].disabled = false;
-        }, 1000);
+ 
+        document.querySelectorAll("game-list")[0].classList.toggle("in");
+ 
     };
 </script>
 <Layout pageName={pageName}>
     <div class="textbox" style="padding-bottom: 0px;">
-        <h3>Hi, nice to meet you.</h3>
+        <h3 style="font-family: var(--font-indie);">Hi, nice to meet you.</h3>
         <div class="row-center" style="justify-content: space-between;">
             <div class="col">
                 <div class="imageContainer aboutImage">
                     <img class="image" src={meInMinecraft.src} alt="" />
                 </div>
-                <p class="small nopadding">Me in minecraft.</p>
+                <p class="small nopadding">Me in Minecraft.</p>
             </div>
-            <h1>=</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-equal-approximately-icon lucide-equal-approximately"><path d="M5 15a6.5 6.5 0 0 1 7 0 6.5 6.5 0 0 0 7 0"/><path d="M5 9a6.5 6.5 0 0 1 7 0 6.5 6.5 0 0 0 7 0"/></svg>
             <div class="col">
                 <div class="imageContainer aboutImage">
                     <img class="image" src={me.src} alt="" />
@@ -147,57 +145,60 @@ const pageName = "about";
         </p>
     </div>
     <label class="buttonLabel" for="showGameList"> Click Me! </label>
-    <div class="gameList">
-        <h4 style="width: 100%; margin-bottom: 30px;">My Top 3 Video Games</h4>
-        <div class="game">
-            <div
-                class="imageHolder one"
-                style="width: 40%;display: flex; flex-direction: row; column-gap: 3em;margin-bottom: 1em;"
-            >
-                <img style="width: 70px;" src={minecraft.src} alt="" />
-            </div>
-            <p class="indent">
-                I remember coming home, turning on the iPad, and watching
-                youtubers such as Stampylonghead, iBallisticSquid, PopularMMOs,
-                CaptainSparklez, SSundee, and many more for hours on end. Some
-                of my best childhood memories are associated with playing
-                Minecraft with friends, playing on servers such as The Hive,
-                Mineplex, and Hypixel, and watching countless minecraft let's
-                plays on youtube. I believe minecraft between the years 2014 and
-                2020 was and still is the best game of all time.
-            </p>
-        </div>
-        <div class="game">
-            <div
-                class="imageHolder two"
-                style="width: 100%; display: flex; flex-direction: row; margin-bottom: 1em; column-gap: 3em "
-            >
-                <img style="width: 50%;" src={terraria.src} alt="" />
-            </div>
-            <p>
-                Terraria, minecraft's brother, has the best singleplayer sandbox
-                gaming experience and progression system that I have ever seen.
-                The game is extremely satisfying to play through. I had so much
-                fun playing Terraria that I even started my own youtube channel
-                by recording Terraria gameplay with my DS' camera.
-            </p>
-        </div>
-        <div class="game">
-            <div
-                class="imageHolder three"
-                style="width: 100%; display: flex; flex-direction: row; column-gap: 3em; margin-bottom: 1em; "
-            >
-                <img style="width: 50%;" src={castlecrashers.src} alt="" />
-            </div>
-            <p>
-                Castle Crashers, a classic fighting game, has a funny story,
-                cool character design, and an amazing soundtrack. I won't forget
-                coming home after school, booting up my PS3 and playing Castle
-                Crashers with a friend. Simply one of the best games when it
-                comes to replayability.
-            </p>
-        </div>
-    </div>
+    <game-list-wrapper>
+        <game-list>
+                <h4 style="width: 100%; margin-bottom: 30px;">My Top 3 Video Games</h4>
+                <div class="game">
+                    <div
+                        class="imageHolder one"
+                        style="width: 40%;display: flex; flex-direction: row; column-gap: 3em;margin-bottom: 1em;"
+                    >
+                        <img style="width: 70px;" src={minecraft.src} alt="" />
+                    </div>
+                    <p class="indent">
+                        I remember coming home, turning on the iPad, and watching
+                        youtubers such as Stampylonghead, iBallisticSquid, PopularMMOs,
+                        CaptainSparklez, SSundee, and many more for hours on end. Some
+                        of my best childhood memories are associated with playing
+                        Minecraft with friends, playing on servers such as The Hive,
+                        Mineplex, and Hypixel, and watching countless minecraft let's
+                        plays on youtube. I believe minecraft between the years 2014 and
+                        2020 was and still is the best game of all time.
+                    </p>
+                </div>
+                <div class="game">
+                    <div
+                        class="imageHolder two"
+                        style="width: 100%; display: flex; flex-direction: row; margin-bottom: 1em; column-gap: 3em "
+                    >
+                        <img style="width: 50%;" src={terraria.src} alt="" />
+                    </div>
+                    <p>
+                        Terraria, minecraft's brother, has the best singleplayer sandbox
+                        gaming experience and progression system that I have ever seen.
+                        The game is extremely satisfying to play through. I had so much
+                        fun playing Terraria that I even started my own youtube channel
+                        by recording Terraria gameplay with my DS' camera.
+                    </p>
+                </div>
+                <div class="game">
+                    <div
+                        class="imageHolder three"
+                        style="width: 100%; display: flex; flex-direction: row; column-gap: 3em; margin-bottom: 1em; "
+                    >
+                        <img style="width: 50%;" src={castlecrashers.src} alt="" />
+                    </div>
+                    <p>
+                        Castle Crashers, a classic fighting game, has a funny story,
+                        cool character design, and an amazing soundtrack. I won't forget
+                        coming home after school, booting up my PS3 and playing Castle
+                        Crashers with a friend. Simply one of the best games when it
+                        comes to replayability.
+                    </p>
+                </div>
+        </game-list>
+    </game-list-wrapper>
+
     <div class="textbox">
         <h3>Hobbies</h3>
         <h4>Sports</h4>

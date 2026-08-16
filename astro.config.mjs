@@ -7,12 +7,13 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   fonts: [{
     provider: fontProviders.bunny(),
-    name: "Bungee Shade",
-    cssVariable: "--font-bs",
-  }, {
+    name: "Arimo",
+    cssVariable: "--font-arimo",
+  },
+  {
     provider: fontProviders.bunny(),
-    name: "IBM Plex Serif",
-    cssVariable: "--font-ibm",
+    name: "Indie Flower",
+    cssVariable: "--font-indie",
   }],
   site: 'http://localhost:4321/',
   integrations: [sitemap()]
