@@ -3,6 +3,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import sitemap from "@astrojs/sitemap";
 
+import node from "@astrojs/node";
+
 // https://astro.build/config
 export default defineConfig({
   fonts: [{
@@ -15,6 +17,11 @@ export default defineConfig({
     name: "Indie Flower",
     cssVariable: "--font-indie",
   }],
+
   site: 'http://localhost:4321/',
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+
+  adapter: node({
+    mode: "standalone"
+  })
 });
