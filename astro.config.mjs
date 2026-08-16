@@ -18,7 +18,7 @@ export default defineConfig({
     cssVariable: "--font-indie",
   }],
 
-  site: 'http://localhost:4321/',
+  site: 'http://localhost:8080/',
   integrations: [sitemap()],
 
   adapter: node({
