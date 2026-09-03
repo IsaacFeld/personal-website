@@ -1,0 +1,23 @@
+---
+import WikiLayout from '../../layouts/WikiLayout.astro'
+import { getCollection, render } from 'astro:content'
+
+// 1. Generate a static path for every blog post entry
+export async function getStaticPaths() {
+  const posts = await getCollection('wiki');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+// 2. Get post data passed via props
+const { post } = Astro.props;
+
+// 3. Render the Markdown body into a component
+const { Content } = await render(post);
+---
+
+<WikiLayout article={post}>
+    <Content />
+</WikiLayout>

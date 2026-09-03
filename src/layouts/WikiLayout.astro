@@ -1,0 +1,88 @@
+---
+import Footer from '../components/Footer.astro';
+import  Return from '../components/Return.astro';
+import BlogThemeIcon from '../components/BlogThemeIcon.astro'
+import { Font } from 'astro:assets';
+import "../styles/global.css";
+
+const { article } = Astro.props
+
+const title = article.data.name.replace(".md", "")
+---
+<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+	
+		<link rel="icon" href="/favicon.ico" />
+		
+		<Font cssVariable="--font-arimo" />  
+		<Font cssVariable="--font-indie" />
+		<!-- Load KaTeX CSS and JS -->
+        <link is-inline rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+        <script is-inline defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+        <!-- Load Auto-render extension -->
+        <script is-inline defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body);"></script>
+		<meta name="generator" content={Astro.generator} />
+		<title>isaac's website - {title}</title>
+		<wikiarticle>
+		    <metadata>
+					<h1 class="wikiarticle-title">{title}</h1> 
+					<div class="wikitags">{article.data.tags.map((tag: string) => (<wikitag>{tag}</wikitag>))}</div>
+					
+					<div class="wikiarticle-status">
+					Written {new Date(article.data.written).toLocaleDateString()} <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-feather-icon lucide-feather"><path d="M14.086 18.412A2 2 0 0112.67 19H5v-7.672a2 2 0 01.586-1.414L11.75 3.75a6 6 0 118.49 8.49z"/><path d="M16 8 2 22"/><path d="M17.488 15H9"/></svg> </div>
+					
+					<summary> 
+					<h2>Summary</h2>
+					<div><span>{article.data.summary}</span></div>
+					</summary>
+					
+			</metadata>
+            <div class="textbox" style="padding-top: 0em;">
+                <slot />      
+                {article.data.related.length != 0 ?   <div class="wikiRelatedContainer">
+                    <h2> Related Articles</h2> 
+                {article.data.related.map((relatedArticleName : string) => {
+                let url = `/wiki/${relatedArticleName.trim().replaceAll(" ", "-").replaceAll("(", "").replaceAll(")", "").toLowerCase()}`;
+                  return <a class="wikiLink" href={url}> {relatedArticleName} </a>
+                })}
+                </div> : ""}
+                {article.data.footnotes.length != 0 ? <div class="wikiFootNotesContainer">
+                    <h2>Footnotes</h2>
+                    {article.data.footnotes ? article.data.footnotes.map((footnote : string, i : number) => {
+                    return <div class="wikiFootNoteContainer"> <wikiFootNote id={"footnote-" + (i+1)}>{i+1}</wikiFootNote><p> {footnote}</p></div>
+                    }) : ""}
+                </div> : ""}
+
+                
+                <Footer />
+            </div>
+
+			
+            <Return link={"/wiki"} />
+            <div class="blogThemeContainer">
+                <BlogThemeIcon />
+            </div>
+            
+            
+		</wikiarticle>
+
+</head>
+
+<script is-inline>
+
+document.addEventListener("DOMContentLoaded", function() {
+    // renderMathInElement is now globally available!
+    renderMathInElement(document.body, {
+      delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}, // This enables Obsidian's inline math 
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+      ],
+      // Optional: Throw an error in the console if LaTeX is invalid, rather than crashing
+      throwOnError: false
+    });
+  });
+</script>

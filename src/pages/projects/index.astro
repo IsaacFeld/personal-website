@@ -165,19 +165,16 @@ function deactivateAllProjects(sparedProject){
         </project-expand>
     </project-row>
     <project-description>
-        This personal website was completely free to make, and if you want to learn how I made it, and also how you could host your own website for free using Github then click me!
+        Why I built my personal website using the <a href="https://astro.build">astro</a> web framework.
     </project-description>
     <project-content-wrapper>
         <project-content>
-            <h3>Github Pages</h3>
-            <p>Github provides a free simple static site for each github account which can be found under "github_username.github.io". To modify the site you need to create a repository whos name perfectly matches your github username, in my case it was "isaacfeld.github.io".
-            Once you've done that you can fetch the repo into your IDE of choice, and start editing. If you want to change the domain of the website you can create a text file called "CNAME" in the root of your project that contains the name of your custom domain (in my case "isaacf.me"). 
-            Then you'll need to register the custom domain in the repository settings after you've updated your own DNS records by adding an alias or A record that points to isaacfeld.github.io. Now you have a free website that you can put anything on!
+            <h3>Markdown Collections</h3>
+            <p> AstroJS is built for blog-focused sites. I thought their built-in markdown support was really neat, and I wanted to utilize it for the blogs on my website. For example, I built my food blog by defining a markdown file for each food review, and put it under src/content/foodblog. I defined metada that is attached to each food review in my content config file, and then astro automatically provided the collection of markdown files as a variable 
+                I can use in my code. So I mapped each food review file to an actual site under the /food directory, therefore I never need to write any new HTML, JS, or CSS when adding a food review, just have to write the review and that's all!
             </p>
-            <h3>Creating isaacf.me</h3>
-            <p>I decided to go the full vanilla route when developing my personal website since Github pages has some built-in limitations as it requires a static site. Github pages lets you use directory-based url addressing, so when you create a folder called "food" then going to "isaacf.me/food" will automatically direct you to the index.html file under that directory.
-                Another issue I noticed is that Browsers tend to cache your .css files so when you update the .css files the browser will still serve the old version of the .css file. The workaround I found was to add a version parameter when linking my stylesheet like so:
-            </p><div class="blob"> src="style.css?v=1" </div> <p> this solution is rather annoying though since you need to update every single link in all your index.html files to force browsers to load and use the updated stylesheets. I also highly suggest getting a minified <a target="_blank" href="https://jquery.com/download/">jquery</a> file and adding it to your project so that you don't need to write out "document.querySelectorAll" each time.</p>
+            <h3>Deploying on Railway</h3>
+            <p>Getting my astro site production ready was surprisingly easy. All I had to do was add the AstroJS Node module which allowed me to build my website as a traditional client-server website with a Express.js backend. Then I created a Dockerfile that copies the important contents, builds the client-server site, and then runs the Express.js server.</p>
         </project-content>
     </project-content-wrapper>
 </project>

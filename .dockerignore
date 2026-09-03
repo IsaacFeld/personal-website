@@ -4,3 +4,7 @@ node_modules
 dist
 .git
 .env
+fetchWikiArticles.ts
+test.ts
+test.txt
+my-tool

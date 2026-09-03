@@ -64,6 +64,9 @@ function handle_hamburger(){
                 <nav-container>
                     <a href="/projects/" class={`navp ${pageName == "projects" ? 'active' : ''}`}>projects</a>
                 </nav-container>
+                <nav-container>
+                    <a href="/wiki/" class={`navp ${pageName == "wiki" ? 'active' : ''}`}>wiki</a>
+                </nav-container>
                <h2 id="mobile-nav-header" class="hamburger-element"> {pageName == 'about' ? 'about me' : pageName}</h2>
             </div>
             <ThemeIcon />
@@ -113,6 +116,12 @@ function handle_hamburger(){
                     <a href="/projects/" class={`navp ${pageName == 'projects' ? 'active' : ''}`}>projects</a>
                 </div>
                 <p> - a rundown of all my personal projects</p>
+            </div>
+            <div class="row-center hamburger-element">
+                <div class="navp-container hamburger-element">
+                    <a href="/wiki/" class={`navp ${pageName == 'wiki' ? 'active' : ''}`}>wiki</a>
+                </div>
+                <p> - my very own wikipedia</p>
             </div>
 
 

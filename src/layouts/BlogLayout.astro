@@ -183,44 +183,4 @@ const atmosphereHalfSrc = getHalfSrc(rating.atmosphere);
 
 </body>
 
-<style>
 
-.ratingContainer .col{
-    align-items: center;
-    padding-top: 2em;
-}
-
-.blogThemeContainer {
-    stroke: var(--text-color) !important;
-}
-
-.blogThemeContainer{
-    height: fit-content;
-    width: fit-content;
-    background-color: var(--bg2-color);
-    padding: 0.5em;
-    border-radius: 2em;
-    position: fixed;
-    bottom: 2em;
-    left: 8em;
-    box-shadow: var(--box-shadow) 0px 2px 15px;
-    transition: all 0.3s ease-in;
-}
-
-@media only screen and (min-width: 800px){
-    .blogThemeContainer:hover{
-        box-shadow: var(--primary-color) 0px 2px 5px;
-    }
-}
-
-@media only screen and (max-width: 800px){
-    .ratingContainer .col {
-        padding-top: 0em;
-    }
-    .blogThemeContainer{
-        left: 84vw;
-        
-    }
-}
-
-</style>

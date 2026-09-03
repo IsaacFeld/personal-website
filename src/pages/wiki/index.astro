@@ -1,0 +1,80 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css"
+import { getCollection } from "astro:content";
+
+const posts = await getCollection('wiki');
+
+---
+
+<Layout pageName="wiki">
+    <div class="textbox">
+        <h1 style="font-family: var(--font-indie);">Isaac's Wiki</h1>
+        <p style="padding-left: 0em;">Welcome to my very own wikipedia. This page serves as a library of knowledge I have collected over the years covering topics ranging from Computer Processor Architectures to Combinatorics. <br/> At the moment this wikipedia mostly consists of University related topics, but I plan to add more as I learn new stuff.</p>
+        
+        <div class="wikiArticleList">
+            {posts.map((post) => (
+            <div class="wikiArticle">
+                <a href={`/wiki/${post.id}`}> {post.data.name} {post.data.tags.map((tag) => (<wikitag>{tag}</wikitag>))}</a>
+                
+            </div>
+            ))}
+        
+        </div>
+    </div>
+    
+    
+        
+    
+</Layout>
+
+<style>
+.wikiArticleList{
+    display: flex; flex-direction: column; 
+    gap: 1em;
+    padding-top: 2em; 
+    border-top: 2px solid var(--primary-color);
+    
+}
+.wikiArticle{
+    padding: 0.5em 1em;
+    width: fit-content;
+    border-radius: 0.5em;
+    transition: background-color 0.3s ease-in;
+    
+}
+.wikiArticle:hover{
+    background-color: var(--bg2-color);
+}
+.wikiArticle a{
+    color: var(--text-color);
+    transition: color 0.3s ease-in;
+    display: flex; flex-direction: row; 
+    align-items: center; 
+    column-gap: 1em;
+
+}
+.wikiArticle a:not(:has(wikitag)){
+    padding: 0.5em 0em;
+}
+.wikiArticle:hover a {
+    color: var(--text-highlight);
+}
+.wikiArticle:hover tag{
+    color: var(--text-highlight);
+}
+.wikiArticle tag{
+    color: var(--text-color)
+}
+@media only  screen and (max-width: 800px){
+    .wikiArticle wikitag{
+        display: none;
+    }
+    .wikiArticle{
+        background-color: var(--bg2-color);
+    }
+    .wikiArticle a:not(:has(wikitag)){
+        padding: 0em;
+    }
+}
+</style>

@@ -9,11 +9,18 @@
     "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate": "bun build --compile ./fetchWikiArticles.ts --outfile my-tool"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.2.1",
     "@astrojs/node": "^11.1.2",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.1.4"
+    "astro": "^7.1.4",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.0"
   }
 }
