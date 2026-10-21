@@ -27,3 +27,5 @@ pnpm-debug.log*
 my-tool
 test.ts
 test.txt
+
+public/wikiImages
