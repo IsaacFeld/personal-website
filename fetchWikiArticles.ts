@@ -10,7 +10,7 @@ const { positionals } = parseArgs({
 const inputPath: string = positionals[0];
 const outputPath: string = positionals[1];
 
-const blacklist = ["Valka Record", "Munich Room Search", "Monogame", "master theorem", "Developing with Small Teams", "Complaints DS", "Links", "Purpose"]
+const whitelist = ["Abstract Keyword", "Array", "Automat", "Binary Arithmetic", "Binary Decision Diagrams", "Binary Search", "Binary Tree", "Binomial Heap", "Boolean Algebra", "Buffers", "Cache Coherence", "CPU Cache", "CPU Hazards", "Deadlock", "Default Keyword", "Final Keyword", "Functional Completeness", "Generics", "gRPC", "Hash Table", "Insertion Sort", "Bubble Sort", "Integrated Circuit Arithmetic", "Interface", "Iteration", "Java Class - Socket", "Java Class - Thread", "Java File System", "JVM Intricacies", "Lambda Expressions", "Learning OpenGL", "Linked List", "Merge Sort", "Monogame", "Multi Cycle Processor", "Number Systems", "Pipelined Processor", "Polymorphism", "Producer Consumer Problem", "Queue", "Race Conditions", "Radix Sort", "Recursion", "Ring Buffer", "RISC-V Assembly", "Roofline Model", "Security Keywords", "Selection Sort", "Sequential Circuits", "Single Cycle Processor", "Stack", "Stack (Computer Architecture)", "Steiner Tree", "Streams", "Synchronized Keyword", "Testing", "Diskrete Strukturen - Graphen", "Diskrete Strukturen - Grundlagen"]
 
 enum Domain {
   E = 1,
@@ -59,7 +59,7 @@ function extractMetaData(rawMarkdown: string): Metadata {
   
 
   let domainString = rawMarkdown.substring(domainIndex, finishedIndex);
-  let finishedString = rawMarkdown.substring(finishedIndex, finishedIndex + 5);
+  let finishedString = rawMarkdown.substring(finishedIndex + 10, finishedIndex + 15);
   let dateString = rawMarkdown.substring(dateIndex + 10, dateIndex + 18);
   let timeString = rawMarkdown.substring(timeIndex + 10, timeIndex + 15);
   
@@ -81,7 +81,6 @@ function extractMetaData(rawMarkdown: string): Metadata {
   } else {
     domain = Domain.W;
   }
-
   let finished: boolean = finishedString.includes("true") ? true : false;
   let [day, month, year] = dateString.split(".");
   let written: Date = new Date(`20${year}-${month}-${day}T${timeString}:00`);
@@ -109,7 +108,8 @@ function extractSummary(rawMarkdown: string): {
     .replaceAll(">", "")
     .replaceAll("---", "");
 
-  return { data: summaryData, endIndex: endIndex };
+  return {
+    data: summaryData, endIndex: endIndex };
 }
 
 function extractBody(
@@ -120,6 +120,7 @@ function extractBody(
   // From End of summary to beginning of related is the body.
   let bodyData = rawMarkdown.substring(endOfSummaryIndex, relatedIndex);
   bodyData.replaceAll("---", "");
+  
   return bodyData;
 }
 
@@ -129,7 +130,7 @@ function getWikiArticle(fileName: string, rawMarkdown: string): WikiArticle {
   return {
     name: fileName,
     metadata: extractMetaData(rawMarkdown),
-    summary: summary.data,
+    summary: parseMarkdown(summary.data),
     body: extractBody(
       rawMarkdown,
       summary.endIndex,
@@ -159,9 +160,9 @@ function extractArticles(err: NodeJS.ErrnoException | null, files: string[]) {
   }
 
   for (const fileName of files) {
-    if (blacklist.includes(fileName.split(".")[0])) {
-      continue;
-    }
+    if (whitelist.includes(fileName.split(".")[0])) {
+      
+    
     fs.readFile(
       `${path.normalize(inputPath + "/" + fileName)}`,
       { encoding: "utf-8" },
@@ -174,9 +175,14 @@ function extractArticles(err: NodeJS.ErrnoException | null, files: string[]) {
           process.exit(1);
         }
         let article: WikiArticle = getWikiArticle(fileName, data);
-        writeArticle(article);
+        
+        if (article.metadata.finished) { // Only write article if finished.
+          writeArticle(article);
+        }
+        
       },
-    );
+      );
+    }
   }
 }
 
@@ -206,10 +212,12 @@ finished: ${article.metadata.finished}
 tags: ${tagsYaml}
 related: ${relatedYaml}
 summary: ${JSON.stringify(article.summary)}
-footnotes: ${(JSON.stringify(article.metadata.footnotes) ?? [])}
+footnotes: ${(JSON.stringify(article.metadata.footnotes ? article.metadata.footnotes.map(parseMarkdown) : null) ?? [])}
 ---
 
-  ${convertBlockQuotes(convertFootnotes(convertLinks(article.body.replaceAll("---", "").replace(`# ${article.name.split(".")[0]}`, ""))))}
+  ${convertBlockQuotes(convertFootnotes(convertLinks(article.body.replaceAll("---", "").replace(`# ${article.name.split(".")[0]}`, "")))).replaceAll(/(.)_{/g, (match, group1) => {
+      return `${group1} _{`;
+  })}
   `;
 }
 
@@ -269,13 +277,13 @@ function storeLink(str: string, start: number, ld: LinkData[]) {
   let linkContent = str.substring(start, end);
   let linkUrl = linkContent;
   let linkName = linkContent;
-  if (linkContent.includes(".")) {
+  if (linkContent.includes(".png") || linkContent.includes(".jpeg") || linkContent.includes(".jpg")) {
     if (linkContent.includes("|")) {
       linkName = linkContent.split("|")[1]; 
       linkUrl = linkContent.split("|")[0];
     }
     // Copy Picture File to Public Directory
-    fs.cp(path.normalize(`/Users/isaacfldmn/Documents/Obsidian/Misc/Assets/${linkUrl}`.trim()), path.normalize(`/Users/isaacfldmn/Desktop/Coding/Personal - Coding/personal-website/public/wikiImages/${linkUrl}`), (err: NodeJS.ErrnoException | null) => {
+    fs.cp(path.normalize(`${inputPath.replace("400 Knowledge", "Misc/Assets/")}${linkUrl}`.trim()), path.normalize(`${outputPath.replace("src\content\wiki", "public/wikiImages/")}${linkUrl}`), (err: NodeJS.ErrnoException | null) => {
       if (err) {
         console.log("Failed to copy picture file!")
         console.error(err);
@@ -284,7 +292,7 @@ function storeLink(str: string, start: number, ld: LinkData[]) {
     })
     // Create IMG Element
     linkName = linkContent;
-    linkUrl = `../wikiImages/${linkName}`
+    linkUrl = `../wikiImages/${linkUrl}`
     ld.push({
       linkStart: start-3,
       linkEnd: start + (str.substring(start).indexOf("]]") + 2),
@@ -320,7 +328,19 @@ function kebabCase(str: string): string {
 }
 
 function parseMarkdown(markdown: string): string {
-  return ""
+  // \*\*\w.\*\* -> <strong> </strong>
+  // document links should also get converted.
+  const boldRegex = /\*\*(.*?)\*\*/g;  
+  markdown = markdown.replace(boldRegex, (_, group1) => {
+    return `<strong>${group1}</strong>`;
+  })
+
+  const italicRegex = /\_(.*?)\_/g;
+  markdown = markdown.replace(italicRegex, (_, group1) => {
+      return `<i>${group1}</i>`
+  })
+
+  return `<p style="line-height: 24px"> ${convertLinks(markdown)} </p>`
 }
 
 
@@ -337,14 +357,17 @@ TODOs
 - [x] fix color issues due to css inline styles / theme
 - [x] render blockquotes properly
 - [x] Remove title & weird remove first h1 css rule
+- [x] Outline on left or right as sidebar with # links to all headers
+- [x] fix latex bugs
+- [x] Parse Summary & Footnotes with simple markdown - html parser
+- [x] Fix mobile view
 
-- [ ] Investigate bug after images causing text to not be put in a <p> element.
-- [ ] Resize Latex & maybe text
-- [ ] Add Searchbar
-- [ ] Parse Summary & Footnotes with simple markdown - html parser
-- [ ] Remove faulty wiki articles
-- [ ] Outline on left or right as sidebar with # links to all headers
+- [ ] Investigate bugged text after images
+- [ ] Investigate all bugs
+- [ ] Searchbar
+- [ ] Add falling snow
+- [ ] Go through each article one by one
 
-
+CPU Cache has image bug and empty related article bug? 
 
 */

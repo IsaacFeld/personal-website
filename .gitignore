@@ -25,7 +25,9 @@ pnpm-debug.log*
 
 # custom parse tool
 my-tool
-test.ts
-test.txt
+my-tool.exe
 
-public/wikiImages
+public/wikiImages/
+src/content/wiki
+src/content/*.png
+src/content/*.jpeg
