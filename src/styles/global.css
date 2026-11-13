@@ -1566,7 +1566,7 @@ project-content p {
 
     .header {
         position: fixed;
-        width: 80%;
+        width: 90%;
         height: fit-content;
         justify-content: space-between;
         display: flex;
