@@ -22,3 +22,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# custom parse tool
+my-tool
+my-tool.exe
+
+public/wikiImages/
+src/content/wiki
+src/content/*.png
+src/content/*.jpeg
