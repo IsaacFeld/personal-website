@@ -38,145 +38,106 @@ function deactivateAllProjects(sparedProject){
 <Layout pageName={pageName}>
 
 
-<h2 style="font-family: var(--font-indie); margin-left: 0.5em;">What I've been working on...</h2>
-
-<project>
-    <project-row>
-        <project-title>
-            2011 Macbook Air Ubuntu Server
-        </project-title>
-        <project-expand>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
-        </project-expand>
-    </project-row>
-    <project-description>
-        I didn't want to pay for cloud hosting services 
-        so I decided to repurpose an ancient Macbook Air into a server for all my homelab needs.
-    </project-description>
-    <project-content-wrapper>
-        <project-content>
-            <h3>Config</h3>
-            <p>
-            
-                I installed Ubuntu Server (22.04.05 LTS) on my 2011 Macbook. Then, I set it up to run websites and web apps. In total, estimated costs are $35/year with it running 24/7. 
-                Using Caddy DuckDNS to keep the IP records up to date I'm able to easily host websites & web apps.
-                If you haven't tried creating your own server yet, but have been thinking about it I highly recommend you to try it out! Not only did I learn a lot about Linux, but I also learnt a lot about networking, dns records, and being able to host your own stuff with your own hardware is freaking awesome. 
-            </p>
-            <h3>Hosting a Node.js Website</h3>
-            <div style="display: flex; flex-direction: row; flex-wrap:wrap; row-gap: 1em; column-gap: 1em;">
-                <div class="blob">bigwb.isaacf.me</div>
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                      <svg style="stroke: var(--text-highlight);" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
-                      <p style="font-size: var(--font-smallest)"> CNAME</p>
-                </div>
-              
-                <div class="blob">isaacf.duckdns.org</div>
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                      <svg style="stroke: var(--text-highlight);" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
-                      <p style="font-size: var(--font-smallest)"> A Record</p>
-                </div>
-                <div class="blob">37.120.24.5</div>
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                      <svg style="stroke: var(--text-highlight);" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
-                      <p style="font-size: var(--font-smallest)"> Caddy </p>
-                </div>
-                <div class="blob">localhost:3001</div>
+    <h2 style="font-family: var(--font-indie); font-size:var(--font-massive);  padding-top: 5%;">What I've been working on...</h2>    
+    
+    
+    <project>
+        <project-row>
+            <project-title>
+                Weatherbuoy
+            </project-title>
+           <div style="display: flex; flex-direction: row; column-gap: 2em; align-items: center;">
+            <a target="_blank" href="https://weatherbuoy-production.up.railway.app/" class="link-container">
+                <svg style="pointer-events: none; color: var(--text-highlight)" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </a>
+            <project-expand>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+            </project-expand>
+           </div>
+    
+        </project-row>
+        <project-description>
+            Weatherbuoy is a passion project me and a friend have been working on.
+            We aim to replace the current outdated crusty PHP site that tracks the water temperature of our favorite lake in Berlin "Schlachtensee" with a more modern, user-friendly, and interesting website. 
+        </project-description>
+        <project-content-wrapper>
+            <project-content>
+                <h3>
+                    Design & Animation
+                </h3>
+                <p>While my friend Lars builds the actual machine that tracks the water temperature, I've been working on the front & back ends of the website.
+                This was the first project where I used a dedicated animation framework (<a href="https://animejs.com/">anime.js</a>) in order to add unique effects to the design such as bubbles, a wave effect, and even some fish! 
+                This was also the first time I ever used Figma to properly plan out a website's design before starting to code.
+                We are far from done, but we hope that by the end of 2026 we'll have a weatherbuoy floating in Schlachtensee.</p>
+                <h3>
+                    Roadmap
+                </h3>
+                <p> My personal goal is to have the Weatherbuoy service & website fully running by early 2027, 
+                    this means implementing a functioning email subscription service, an email alert system, and polishing the website.</p>
+            </project-content>
+        </project-content-wrapper>
+    
+    </project>
+    <project>
+        <project-row>
+            <project-title>
+                isaacf.me
+            </project-title>
+            <project-expand>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+            </project-expand>
+        </project-row>
+        <project-description>
+            Why I built my personal website using the <a target="_blank" href="https://astro.build">astro</a> web framework.
+        </project-description>
+        <project-content-wrapper>
+            <project-content>
+                <h3>Markdown Collections</h3>
+                <p> AstroJS is built for blog-focused sites. I thought their built-in markdown support was really neat, and I wanted to utilize it for the blogs on my website. For example, I built my food blog by defining a markdown file for each food review, and put it under src/content/foodblog. I defined metada that is attached to each food review in my content config file, and then astro automatically provided the collection of markdown files as a variable 
+                    I can use in my code. So I mapped each food review file to an actual site under the /food directory, therefore I never need to write any new HTML, JS, or CSS when adding a food review, just have to write the review and that's all!
+                </p>
+                <h3>Deploying on Railway</h3>
+                <p>Getting my astro site production ready was surprisingly easy. All I had to do was add the AstroJS Node module which allowed me to build my website as a traditional client-server website with a Express.js backend. Then I created a Dockerfile that copies the important contents, builds the client-server site, and then runs the Express.js server.</p>
+            </project-content>
+        </project-content-wrapper>
+    </project>
+    
+    <project>
+        <project-row>
+            <project-title>
+                youtube
+            </project-title>
+            <div style="display: flex; flex-direction: row; column-gap: 2em; align-items: center;">
+             <a target="_blank" href="https://www.youtube.com/@isaacfldmn" class="link-container">
+                 <svg style="pointer-events: none; color: var(--text-highlight)" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+             </a>
+             <project-expand>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+             </project-expand>
             </div>
-        </project-content>
-    </project-content-wrapper>
+        </project-row>
+        <project-description>
+            I have a youtube channel where I make some video-essay style videos every now and then.
+        </project-description>
+        <project-content-wrapper>
+            <project-content>
+                <h3> The Concept </h3>
+                <p> I always liked the idea of writing up a script for a youtube video, and playing some background gaming footage while I go over that script. On my old youtube channel (Pugcy) I simply uploaded gaming content that was mostly done on the spot. I wanted to take a stab at actually putting in some effort into the production of a youtube video.</p>
+                
+                <h3>going from highschool to university</h3>
+                <p> This video details the turbulent transition from highschool to university, it covers topics ranging from a breakup to overconsumption, and of course impostor syndrome. </p>
+                <iframe style="border-radus: 1em;" width="560" height="315" src="https://www.youtube.com/embed/HdHbovcC5Bw?si=sPLNRPfTclcuLWYn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>are we overestimating human value?</h3>
+                <p>I recorded this video after returning from my first ever trip to Asia, where I visited 8 different cities in China. I wrestle with the differences between Western society and Asia, and pose a thoery as to why China in particular is in stark support of AI, whereas people in the West tend to dislike it.</p>
+                <iframe style="border-radius: 1em;" width="560" height="315" src="https://www.youtube.com/embed/rjiexvqktFM?si=nmkug14NqjiLMPoP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </project-content>
+        </project-content-wrapper>
+    </project>
 
-</project>
 
 
-<project>
-    <project-row>
-        <project-title>
-            Weatherbuoy
-        </project-title>
-       <div style="display: flex; flex-direction: row; column-gap: 2em; align-items: center;">
-        <a target="_blank" href="https://weatherbuoy-production.up.railway.app/" class="link-container">
-            <svg style="pointer-events: none; color: var(--text-highlight)" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        </a>
-        <project-expand>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
-        </project-expand>
-       </div>
 
-    </project-row>
-    <project-description>
-        Weatherbuoy is a passion project me and a friend have been working on.
-        We aim to replace the current outdated crusty PHP site that tracks the water temperature of our favorite lake in Berlin "Schlachtensee" with a more modern, user-friendly, and interesting website. 
-    </project-description>
-    <project-content-wrapper>
-        <project-content>
-            <h3>
-                Design & Animation
-            </h3>
-            <p>While my friend Lars builds the actual machine that tracks the water temperature, I've been working on the front & back ends of the website.
-            This was the first project where I used a dedicated animation framework (<a href="https://animejs.com/">anime.js</a>) in order to add unique effects to the design such as bubbles, a wave effect, and even some fish! 
-            This was also the first time I ever used Figma to properly plan out a website's design before starting to code.
-            We are far from done, but we hope that by the end of 2026 we'll have a weatherbuoy floating in Schlachtensee.</p>
-            
-        </project-content>
-    </project-content-wrapper>
 
-</project>
-<project>
-    <project-row>
-        <project-title>
-            Cosmos
-        </project-title>
-        <project-expand>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
-        </project-expand>
-    </project-row>
-    <project-description>
-        Cosmos is a work-in-progress open source 
-        google drive alternative powered by Nuxt & Supabase. Cosmos turns file sharing into a more social experience by promoting sharing through friends instead of just links.
-    </project-description>
-    <project-content-wrapper>
-        <project-content>
-            <h3>Inspiration</h3>
-            <p>I was motivated to create Cosmos because I wanted to have my own file storage interface 
-                that I could potentially host on my own server that was secure, private, and easy to use. I also wanted to learn about networking, 
-                authentication, and how file upload & downloads are handled. Also once it was up and running I wanted to be able to share files with friends and family and let them upload stuff as well. 
-            </p>
-            <h3>The Work</h3>
-            <p>
-                I built Cosmos using Nuxtv3, and used Supabase to handle authentication and database stuff. For the UI I used a mix of NuxtUI's premade components, and hand-drawn icons! 
-                The big challenges when it came to Cosmos was the architecture behind file & especially folder upload/download. For a simple small file it was simple, but things got complicated when the file was big or someone uploaded a folder with hundreds or even thousands of files. 
-                In order to solve these issues I needed to implement systems to split up the uploads in chunks, which would eleviate the load on the server, and I also needed to implement a cleanup service that would keep track of uploads, and regularly clean up those that failed due to network interrupts or other unexpected interruptions.
-            </p>
-            <h3>Reality</h3>
-            <p>Eventually I got a barebones version of Cosmos running, and even shared it with some people to test it out. The file sharing functionality worked well, but there were still quite a few bugs lying around. There was also a lot of room for improvement, and I realized that the infrastructure required for hosting a virtual drive service is quite expensive.
-            I also needed quick wifi, which was not happening any time soon due to me living in Germany so I realized that I should put the project on hold until I'm in a better place physically where I could actually realistically host Cosmos for others to use! 
-            Thus Cosmos is not being worked on at the moment, but I do intend to continue working on it one day and create a finished product. 
-            </p>
-        </project-content>
-    </project-content-wrapper>
-</project>
-<project>
-    <project-row>
-        <project-title>
-            isaacf.me
-        </project-title>
-        <project-expand>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
-        </project-expand>
-    </project-row>
-    <project-description>
-        Why I built my personal website using the <a href="https://astro.build">astro</a> web framework.
-    </project-description>
-    <project-content-wrapper>
-        <project-content>
-            <h3>Markdown Collections</h3>
-            <p> AstroJS is built for blog-focused sites. I thought their built-in markdown support was really neat, and I wanted to utilize it for the blogs on my website. For example, I built my food blog by defining a markdown file for each food review, and put it under src/content/foodblog. I defined metada that is attached to each food review in my content config file, and then astro automatically provided the collection of markdown files as a variable 
-                I can use in my code. So I mapped each food review file to an actual site under the /food directory, therefore I never need to write any new HTML, JS, or CSS when adding a food review, just have to write the review and that's all!
-            </p>
-            <h3>Deploying on Railway</h3>
-            <p>Getting my astro site production ready was surprisingly easy. All I had to do was add the AstroJS Node module which allowed me to build my website as a traditional client-server website with a Express.js backend. Then I created a Dockerfile that copies the important contents, builds the client-server site, and then runs the Express.js server.</p>
-        </project-content>
-    </project-content-wrapper>
-</project>
+
 
 </Layout>

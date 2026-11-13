@@ -25,9 +25,10 @@ const foodblog = defineCollection(
     published: z.coerce.date(),
     updated: z.coerce.date().optional(),
   }),
-});
+  });
+/*
 const wiki = defineCollection({
-  loader: glob({ base: './src/content/wiki', pattern: '**/*.{md,mdx}' }),
+  loader: glob({ base: './src/content/wiki', pattern: }),
   schema: z.object({
     name: z.string(),
     domain: z.number(),
@@ -39,6 +40,6 @@ const wiki = defineCollection({
     footnotes: z.array(z.string()),
   })
 })
-
+ */
 // 5. Export a single `collections` object to register your collection(s)
-export const collections = { foodblog, wiki };
+export const collections = { foodblog };

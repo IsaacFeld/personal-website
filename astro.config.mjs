@@ -4,11 +4,6 @@ import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
 
 import node from "@astrojs/node";
-
-// preserve math blocks in markdown parser
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-
 // https://astro.build/config
 export default defineConfig({
   fonts: [{
@@ -29,9 +24,4 @@ export default defineConfig({
   adapter: node({
     mode: "standalone"
   }),
-  
-  markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
-  }
 });

@@ -15,7 +15,6 @@
     --rose-color: #ee4e6a;
     --text-accent: hsl(30, 83%, 86%);
     --box-shadow: #00000035;
-    --box-shadow-wiki: #f8f8f825;
     --font-smallest: 0.75em;
     --font-small: 0.875em;
     --font-normal: 1em;
@@ -46,12 +45,12 @@
     --rose-color: #741c2b;
     --text-accent: hsl(30, 83%, 14%);
     --box-shadow: #999999;
-    --box-shadow-wiki: #00000035;
     --purple-one: hsl(266, 79%, 19%);
     --purple-two: hsl(256, 48%, 33%);
     --purple-three: hsl(270, 48%, 50%);
     --tan-green: hsl(120, 24%, 19%);
 }
+
 *{
     font-family: var(--font-arimo);
 }
@@ -820,6 +819,7 @@ project {
     display: flex;
     flex-direction: column;
     transition: border-color 0.25s ease-in;
+    
 }
 
 project:hover {
@@ -1031,7 +1031,7 @@ project-content p {
 
 
 
-    /* Wiki */
+    /* Wiki
     :root:has(wikiarticle){
         --dark0-hard:     #1d2021;
         --dark0:          #282828;
@@ -1330,7 +1330,7 @@ project-content p {
         color: var(--text-highlight)
     }
     
-    /* Footnotes */
+    
     .wikiFootNotesContainer{
         display: flex;
         flex-direction: column;
@@ -1361,7 +1361,7 @@ project-content p {
         margin-top: 20px;
         transition: background-color 0.22s ease-in color 0.22s ease-in;
     }
-    /* Block Quotes */
+    
     
     
     wikiarticle blockquote{
@@ -1408,6 +1408,7 @@ project-content p {
     .blockQuoteInfoIcon{
         color: var(--wiki-blue);
     }
+     */
 
 /* Phones */
 @media only screen and (max-width: 800px) {
@@ -1422,6 +1423,7 @@ project-content p {
         --font-signature: var(--font-normal);
     }
 
+    /* 
     .wikiImage{
         max-width: 100%;
     }
@@ -1432,12 +1434,17 @@ project-content p {
     wikiarticle outline{
         display: none !important;
     }
+    */
     .ratingContainer .col {
         padding-top: 0em;
     }
     .blogThemeContainer{
         left: 84vw;
         
+    }
+    iframe{
+        width: 250px;
+        height: 150px;
     }
     
     .textseparator {
@@ -1558,18 +1565,20 @@ project-content p {
     }
 
     .header {
+        position: fixed;
+        width: 80%;
+        height: fit-content;
         justify-content: space-between;
         display: flex;
         flex-direction: column;
         align-items: center;
-        transition: border-radius 0.5s ease-out padding 0.5s ease-out;
+        transition: border-radius 0.5s ease-out, padding 0.5s ease-out;
         
     }
 
     /* Header Border Radius Animation */
     .header:has(hamburger-menu.out) {
         border-radius: 2em;
-        padding-bottom: 2em;
     }
 
     /* Hide non-phone Navigation Containers */
@@ -1708,6 +1717,7 @@ project-content p {
     .center {
         align-items: center;
         width: 85%;
+        padding-top: 20%;
     }
 
     .imageHolder.one {
@@ -1757,6 +1767,7 @@ project-content p {
         padding: 20px 20px;
     }
 
+    /*
     .wikiFootNoteContainer wikiFootNote{
         background-color: var(--wiki-yellow);
         color: var(--wiki-bg-contrast);
@@ -1765,6 +1776,7 @@ project-content p {
     .wikiFootNoteContainer  p{
         color: var(--text-accent)
     }
+    */
 
     @keyframes project-expand {
         0% {
